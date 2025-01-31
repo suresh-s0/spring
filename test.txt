@@ -1,0 +1,51 @@
+Spring boot demo project:
+
+prerequisites:
+
+•   Create a Spring Boot base application project from “Spring Initializer”.
+•   In that, add dependencies for JDBC, Hibernate, JPA, MySQL (any database), and Spring  Security Core for hashing the password.
+•   On that, code in this location “src/main/java/example/demo” to create folders like service, controller, repository, model, utils, and create the classes for those.
+•   In resources/application.properties, add necessary code for the location of the database,           Hibernate configurations, and other queries to execute the code, etc.
+    • Run this code with /mvnw spring-boot:run  
+
+
+Model :
+
+    • create a model class for to create a table in the database .
+    • Use annotation @Entity to mention this as entityclass. And  @Table(name=”tablename”)
+    • create  private global vatiable to decalre themm as colum in the table.
+    • Use annotation @Id to declare that variable as primery key.
+    • @GenratdValues(strategy =GenerationType.IDENTITY) to gentrate autoincrement value
+    • use @Column(nullable = false/true ,unique =true,etc) for constrains.
+    • Create  constructer for that clas public.
+    • And define getters , setters methods  for accessing and stroing the value in the variables. ToString method() to print the data.
+    • .......
+
+Utils :
+
+    • this file for to create a common function that will be used in the project like hashing , sending mail,sms, otp,pagination etc.
+    • Hashing:
+    • for hashing use BcryptPasswordEncoder class object in that use the method encoder(...)  to encode the password .and to compare use the matches(...)  method
+    •  ....
+
+Repository :
+
+    • create interface for repository class and extends JpaRepository<>
+    • this jpa class will have some buildin functions to access and perform crud operation on the database.
+    • If need can able use raw sql querry using @Query(...).
+
+
+
+
+
+Service :
+
+    • create  service class @Service.  Declare the varible type of the repository interface.
+    • in here write the business logic to accesss and store the data.
+    •  And create the methods here to implement the logics .
+
+Controller/handler :
+
+    • create a controller class  using @RestController.
+    • Use @RequestMapping(“/api path”) for group routes.create the varible type of the service class.
+    • Create the methods for the operations . Usethe correct requestmethod and path using annotation like @PostMapping/ @PostMapping(“/path”),@GetMapping   for these path is optional.
