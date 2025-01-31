@@ -20,6 +20,10 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
+    @Column(nullable = false)
+    private String password;
+
+
     // Default constructor
     public User() {}
 
@@ -41,6 +45,11 @@ public class User {
        return name;
    } 
 
+    public String getPassword() {
+        return password;
+    }
+   
+
    public void setEmail(String email) {
        this.email = email;
    }
@@ -49,6 +58,18 @@ public class User {
    }
    public void setName(String name) {
        this.name = name;
+   }
+
+   public void setPassword(String password) {
+       this.password = password;
+   }
+
+
+   @Override
+   public String toString() {
+     
+       return "User{id=" + id + ", name='" + name + "', email='" + email + "'}";
+
    }
 
    
