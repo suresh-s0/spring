@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import example.demo.model.User;
 import example.demo.repository.UserRepository;
@@ -32,6 +33,13 @@ public class UserService {
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
-
+   
+    @Transactional
+    public void updateUserName(Long id, String newName) {
+        int rowsUpdated = userRepository.updateUserName(id, newName);
+        if (rowsUpdated == 0) {
+            throw new RuntimeException("User not found or update failed");
+        }
+    }
     
 }
